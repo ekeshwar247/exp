@@ -1,11 +1,23 @@
-import mongoose from 'mongoose'
-import {DB_NAME} from './constants.js'
 import dotenv from 'dotenv'
 import {connection} from './db/connect.js'
+import {app} from './app.js'
+
 dotenv.config()
 
 connection()
+.then(()=>{
+   app.listen(process.env.PORT,()=>{
+      console.log('Server is listening on Port: '+process.env.PORT)
+   })
+})
+.catch((err)=>{
+   console.log(err)
+})
 
+
+// app.listen(process.env.PORT,()=>{
+//    console.log('Server is listening on Port: '+process.env.PORT)
+// })
 
 // console.log(process.env.MONGODB_URL)
 
