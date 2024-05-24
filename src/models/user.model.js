@@ -57,7 +57,7 @@ userSchema.pre('save',
         if(!this.isModified("password"))
             return next()
         this.password = bcrypt.hash(this.password,10)
-        nextx()
+        next()
         
     }
 )
